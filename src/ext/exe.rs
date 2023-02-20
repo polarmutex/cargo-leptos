@@ -137,7 +137,7 @@ fn get_cache_dir(name: &str) -> Result<PathBuf> {
         .ok_or_else(|| anyhow::anyhow!("Cache directory does not exist"))?
         .join(name);
 
-    if !dir.exists() {
+    if !dir.exists() && cfg!(feature = "no_downloads") {
         std::fs::create_dir_all(&dir).context(format!("Could not create dir {dir:?}"))?;
     }
 
