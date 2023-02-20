@@ -254,7 +254,7 @@ impl Exe {
     }
 
     pub fn meta(&self) -> Result<ExeMeta> {
-        let cache_dir = get_cache_dir("cargo-leptos").expect("Can not get cache directory");
+        let cache_dir = PathBuf::new();//get_cache_dir("cargo-leptos").expect("Can not get cache directory");
         self.meta_with_dir(cache_dir)
     }
 }
